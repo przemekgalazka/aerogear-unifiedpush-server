@@ -85,9 +85,9 @@ public class PushApplicationEndpoint extends AbstractBaseEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     public Response listAllPushApplications() {
         LOGGER.info("===================================================");
-        LOGGER.info(sec.getUserPrincipal().getName());
+        LOGGER.info(" '"+pushAppService+"' ");
         LOGGER.info("===================================================");
-        return Response.ok(pushAppService.findAllPushApplicationsForDeveloper(sec.getUserPrincipal().getName())).build();
+        return Response.ok(pushAppService.findAllPushApplicationsForDeveloper("KALLE")).build();
     }
 
     @GET

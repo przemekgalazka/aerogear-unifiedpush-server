@@ -52,7 +52,7 @@ public class KeycloakServerApplication extends KeycloakApplication {
             RealmModel realm = importRealm(session, rep);
             AdapterDeploymentContext deploymentContext = (AdapterDeploymentContext)servletContext.getAttribute(AdapterDeploymentContext.class.getName());
             AdapterConfig adapterConfig = new AdapterConfig();
-            String uri = KeycloakUriBuilder.fromUri("http://localhost:8080").path(servletContext.getContextPath()).build().toString();
+            String uri = KeycloakUriBuilder.fromUri("http://localhost:8080" ).path(servletContext.getContextPath()).path("auth").build().toString();
             logger.info("**** auth server url: " + uri);
             adapterConfig.setRealm("demo");
             adapterConfig.setResource("customer-portal");

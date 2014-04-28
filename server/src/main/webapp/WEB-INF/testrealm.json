@@ -50,10 +50,11 @@
         {
             "name": "customer-portal",
             "enabled": true,
-            "adminUrl": "http://localhost:8080/app-bundle",
-            "baseUrl": "http://localhost:8080/app-bundle",
+            "adminUrl": "http://localhost:8080/ag-push",
+            "baseUrl": "http://localhost:8080/ag-push",
             "redirectUris": [
-                "http://localhost:8080/app-bundle/*"
+                "http://localhost:8080/ag-push/*",
+                "http://localhost:8080/ag-push/index.html"
             ],
             "secret": "password"
         }

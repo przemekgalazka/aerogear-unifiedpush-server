@@ -228,11 +228,6 @@
         </dependency>
         <dependency>
             <groupId>org.keycloak</groupId>
-            <artifactId>keycloak-admin-ui</artifactId>
-            <version>${keycloak.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.keycloak</groupId>
             <artifactId>keycloak-js-adapter</artifactId>
             <version>${keycloak.version}</version>
         </dependency>

@@ -39,33 +39,58 @@ import java.util.Set;
 public class UnifiedPushApplication extends Application {
 
     private final Set<Object> singletons = new HashSet<Object>();
+    private final Set<Class<?>> resources = new HashSet<Class<?>>();
 
     public UnifiedPushApplication() {
 
         // utils
-        singletons.add(new Ping());
+        resources.add(Ping.class);
 
         // Sender
-        singletons.add(new PushNotificationSenderEndpoint());
+        resources.add(PushNotificationSenderEndpoint.class);
 
         // Device Registration:
-        singletons.add(new InstallationRegistrationEndpoint());
+        resources.add(InstallationRegistrationEndpoint.class);
 
         // Management Endpoints:
-        singletons.add(new InstallationManagementEndpoint());
-        singletons.add(new PushApplicationEndpoint());
-        singletons.add(new AndroidVariantEndpoint());
-        singletons.add(new ChromePackagedAppEndpoint());
-        singletons.add(new iOSVariantEndpoint());
-        singletons.add(new SimplePushVariantEndpoint());
+        resources.add(InstallationManagementEndpoint.class);
+        resources.add(PushApplicationEndpoint.class);
+        resources.add(AndroidVariantEndpoint.class);
+        resources.add(ChromePackagedAppEndpoint.class);
+        resources.add(iOSVariantEndpoint.class);
+        resources.add(SimplePushVariantEndpoint.class);
+
+
+//
+//        // utils
+//        singletons.add(new Ping());
+//
+//        // Sender
+//        singletons.add(new PushNotificationSenderEndpoint());
+//
+//        // Device Registration:
+//        singletons.add(new InstallationRegistrationEndpoint());
+//
+//        // Management Endpoints:
+//        singletons.add(new InstallationManagementEndpoint());
+//        singletons.add(new PushApplicationEndpoint());
+//        singletons.add(new AndroidVariantEndpoint());
+//        singletons.add(new ChromePackagedAppEndpoint());
+//        singletons.add(new iOSVariantEndpoint());
+//        singletons.add(new SimplePushVariantEndpoint());
     }
 
 
-
-    @Override
-    public Set<Object> getSingletons() {
-        return singletons;
+    public Set<Class<?>> getClasses() {
+        return resources;
     }
+
+
+//
+//    @Override
+//    public Set<Object> getSingletons() {
+//        return singletons;
+//    }
 
 
 

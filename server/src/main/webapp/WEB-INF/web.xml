@@ -152,6 +152,17 @@
             <role-name>user</role-name>
         </auth-constraint>
     </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>HttpBasic</web-resource-name>
+            <description>Matches a few special URLs.</description>
+            <url-pattern>/service/registry/device</url-pattern>
+            <url-pattern>/service/sender</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+
+
     <!--security-constraint>
         <web-resource-collection>
             <web-resource-name>deny</web-resource-name>

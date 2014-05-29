@@ -47,7 +47,7 @@
     <persistence-unit name="picketlink-default"
                       transaction-type="JTA">
         <description>PicketLink Persistence Unit</description>
-        <jta-data-source>java:jboss/datasources/UnifiedPushDS</jta-data-source>
+        <jta-data-source>java:jboss/datasources/MySQLDS</jta-data-source>
 
         <class>org.picketlink.idm.jpa.model.sample.simple.AttributedTypeEntity</class>
         <class>org.picketlink.idm.jpa.model.sample.simple.AccountTypeEntity</class>

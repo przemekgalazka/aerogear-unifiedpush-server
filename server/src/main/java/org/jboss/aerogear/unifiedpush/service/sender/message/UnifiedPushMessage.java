@@ -21,7 +21,7 @@ import java.util.Map;
 /**
  * Contains the data of the JSON payload that has been sent to the
  * RESTful Sender endpoint.
- * 
+ *
  * <p>
  * For details have a look at the <a href="http://aerogear.org/docs/specs/aerogear-push-messages/">Message Format Specification</a>.
  */
@@ -178,6 +178,10 @@ public class UnifiedPushMessage {
      */
     public boolean isContentAvailable() {
         return contentAvailable;
+    }
+
+    public boolean isBadgeSet() {
+        return badge > -1;
     }
 
     /**

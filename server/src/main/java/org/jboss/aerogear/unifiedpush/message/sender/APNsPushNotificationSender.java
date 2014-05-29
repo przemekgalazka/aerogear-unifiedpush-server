@@ -16,17 +16,6 @@
  */
 package org.jboss.aerogear.unifiedpush.message.sender;
 
-import com.notnoop.apns.APNS;
-import com.notnoop.apns.ApnsService;
-import com.notnoop.apns.ApnsServiceBuilder;
-import com.notnoop.apns.EnhancedApnsNotification;
-import com.notnoop.apns.PayloadBuilder;
-import org.jboss.aerogear.unifiedpush.message.cache.APNsCache;
-import org.jboss.aerogear.unifiedpush.model.iOSVariant;
-import org.jboss.aerogear.unifiedpush.service.ClientInstallationService;
-import org.jboss.aerogear.unifiedpush.service.sender.message.UnifiedPushMessage;
-
-import javax.inject.Inject;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -35,6 +24,18 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import javax.inject.Inject;
+
+import org.jboss.aerogear.unifiedpush.model.iOSVariant;
+import org.jboss.aerogear.unifiedpush.service.ClientInstallationService;
+import org.jboss.aerogear.unifiedpush.service.sender.message.UnifiedPushMessage;
+
+import com.notnoop.apns.APNS;
+import com.notnoop.apns.ApnsService;
+import com.notnoop.apns.ApnsServiceBuilder;
+import com.notnoop.apns.EnhancedApnsNotification;
+import com.notnoop.apns.PayloadBuilder;
 
 public class APNsPushNotificationSender {
 
@@ -60,7 +61,6 @@ public class APNsPushNotificationSender {
         PayloadBuilder builder = APNS.newPayload()
                 // adding recognized key values
                 .alertBody(pushMessage.getAlert()) // alert dialog, in iOS
-                .badge(pushMessage.getBadge()) // little badge icon update;
                 .sound(pushMessage.getSound()); // sound to be played by app
 
                 // apply the 'content-available:1' value:
@@ -69,6 +69,11 @@ public class APNsPushNotificationSender {
                     // Newsstand, however 'notnoop' names it this way (legacy)...
                     builder = builder.forNewsstand();
                 }
+
+                if (pushMessage.isBadgeSet()){
+                    builder = builder.badge(pushMessage.getBadge()); // little badge icon update;
+                }
+
 
                 builder = builder.customFields(pushMessage.getData()); // adding other (submitted) fields
 

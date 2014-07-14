@@ -16,6 +16,8 @@
  */
 package org.jboss.aerogear.unifiedpush.message.sender;
 
+import static org.apache.commons.lang.StringUtils.defaultString;
+
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.util.Collection;
@@ -45,9 +47,9 @@ public class APNsPushNotificationSender {
     private ClientInstallationService clientInstallationService;
 
     /**
-     * Sends APNs notifications ({@link UnifiedPushMessage}) to all devices, that are represented by 
+     * Sends APNs notifications ({@link UnifiedPushMessage}) to all devices, that are represented by
      * the {@link Collection} of tokens for the given {@link iOSVariant}.
-     * 
+     *
      * @param iOSVariant the logical construct, needed to lookup the certificate and the passphrase.
      * @param tokens collection of tokens, representing actual iOS devices
      * @param pushMessage the payload to be submitted
@@ -60,7 +62,7 @@ public class APNsPushNotificationSender {
 
         PayloadBuilder builder = APNS.newPayload()
                 // adding recognized key values
-                .alertBody(pushMessage.getAlert()) // alert dialog, in iOS
+                .alertBody(defaultString(pushMessage.getAlert())) // alert dialog, in iOS
                 .sound(pushMessage.getSound()); // sound to be played by app
 
                 // apply the 'content-available:1' value:
@@ -139,7 +141,7 @@ public class APNsPushNotificationSender {
 
     /**
      * Returns the ApnsService, based on the required profile (production VS sandbox/test).
-     * Null is returned if there is no "configuration" for the request stage 
+     * Null is returned if there is no "configuration" for the request stage
      */
     private ApnsService buildApnsService(iOSVariant iOSVariant) {
 
